@@ -1,14 +1,23 @@
 # AngularDeepDiveApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.7.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.7. It contains some pratices viewed on the [Angular Core Deep Dive](https://angular-university.io/course/angular-course) course.
+
+
+<p align="center">
+  <img src="./src/assets/window.gif" alt="Sublime's custom image"/>
+</p>
 
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Code scaffolding
+ # To Run the Development Backend Server
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+In order to be able to provide realistic examples, we will need in our playground a small REST API backend server. We can start the sample application backend with the following command:
+
+    npm run server
+
+This is a small Node REST API server.
 
 ## Build
 
