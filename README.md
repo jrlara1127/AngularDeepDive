@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 
 <p align="center">
-  <img src="./src/assets/window.gif" alt="Sublime's custom image"/>
+  <img src="./src/assets/window.gif" alt="Sublime's custom image" style = "width: 600px; height:250px;"/>
 </p>
 
 ## Development server
@@ -13,7 +13,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The appli
 
  # To Run the Development Backend Server
 
-In order to be able to provide realistic examples, we will need in our playground a small REST API backend server. We can start the sample application backend with the following command:
+In order to use the consult and save services implemented on the code to retrive data and save the new card title, it will need raise a small REST API backend server. We can start the sample application backend with the following command:
 
     npm run server
 
