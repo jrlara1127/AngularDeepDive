@@ -1,14 +1,61 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, DoCheck, Inject, Injector, OnInit} from '@angular/core';
+import {Course} from './model/course';
+import {Observable} from 'rxjs';
+import {AppConfig, CONFIG_TOKEN} from './config';
+import {COURSES} from '../db-data';
+import {createCustomElement} from '@angular/elements';
+import {CourseTitleComponent} from './course-title/course-title.component';
+import { CoursesService } from './courses/courses.service';
+
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [CommonModule, RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.css'],
 })
-export class AppComponent {
-  title = 'angular-deep-dive-app';
+export class AppComponent implements OnInit {
+
+    courses: Course[] = COURSES;
+   // courses$: Observable<Course[]>;
+
+    coursesTotal = this.courses.length;
+
+    constructor(
+        private coursesService: CoursesService,
+        @Inject(CONFIG_TOKEN) private config: AppConfig,
+        private injector: Injector) {
+            
+        //this.courses$ = this.coursesService.loadCourses();
+        //this.coursesService.loadCourses().subscribe(courses => this.courses = courses);
+    }
+
+    ngOnInit() {
+
+        const htmlElement = createCustomElement(CourseTitleComponent, {injector:this.injector});
+
+        customElements.define('course-title', htmlElement);
+
+
+    }
+
+    onEditCourse() {
+            console.log("onEditCourse");
+            
+            const course = this.courses[0];
+            const newcourse:Course = {...course};
+            newcourse.category = 'ADVANCED';
+
+            this.courses[0] = newcourse;
+            
+           
+    }
+
+    save(course: Course) {
+        this.coursesService.saveCourse(course)
+            .subscribe(
+                () => console.log('Course Saved!')
+            );
+    }
+
+
 }
